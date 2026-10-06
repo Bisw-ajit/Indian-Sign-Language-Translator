@@ -1,0 +1,5 @@
+Representation,Dimension,Accuracy,Balanced_Accuracy,Macro_F1,Weighted_F1,S_confused_as_G,K_confused_as_V,Train_Time_s
+coords,63,97.5,97.5,97.49,97.49,3,1,1.89
+coords_angles,67,95.5,95.5,95.53,95.53,1,1,1.78
+coords_dists,78,97.5,97.5,97.47,97.47,2,0,1.79
+coords_angles_dists_orient,86,96.0,96.0,95.98,95.98,2,0,1.85

@@ -1,0 +1,4 @@
+Model,Accuracy,Balanced_Accuracy,Macro_F1,Weighted_F1,Latency_ms,P95_Latency_ms,FPS,Model_Params,Train_Time_s
+Landmark MLP (FC),95.0,95.0,94.94,94.94,17.92,18.49,55.8,19530,2.02
+1D-CNN (Temporal/Spatial),89.5,89.5,89.38,89.38,20.63,25.81,48.5,35018,3.16
+Residual MLP (Res-Dense),97.0,97.0,96.99,96.99,17.03,17.98,58.7,36554,2.12

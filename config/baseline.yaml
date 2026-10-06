@@ -1,0 +1,72 @@
+# Baseline Configuration - Indian Sign Language Translator
+project:
+  name: "Indian-Sign-Language-Translator"
+  version: "0.1.0-baseline"
+  date: "2026-10-04"
+  random_seed: 42
+
+environment:
+  os: "macOS (Darwin arm64)"
+  platform: "macOS-27.0-arm64-arm-64bit"
+  python_version: "3.10.20"
+  tensorflow_version: "2.21.0"
+  opencv_version: "4.14.0"
+  numpy_version: "2.2.6"
+  psutil_version: "7.2.2"
+  cpu_count: 8
+  ram_gb: 8.0
+
+baseline_artifacts:
+  model_path: "App/final_model.h5"
+  model_sha256: "456caa08de4495cdbd1d325d04611cced2c4b6349d1db7c79013da62ba2c8321"
+  model_architecture: "SqueezeNet v1.1"
+  input_shape: [224, 224, 3]
+  num_classes: 10
+  classes: ["G", "I", "K", "O", "P", "S", "U", "V", "X", "Y"]
+  class_json_path: "App/model_class.json"
+  class_json_sha256: "a4638e87a3d70994a77fa5f9464f486ed92a6d15d115cc543c13ac8ccff61b42"
+
+detector:
+  type: "YOLOv3-Darknet"
+  cfg_path: "App/yolo_models/cross-hands.cfg"
+  cfg_sha256: "19ff59e59936688fb18e6edc8711b2166c6f445b08605e4040b965cd8c1155c2"
+  weights_path: "App/yolo_models/cross-hands.weights"
+  weights_sha256: "55a01032ca700896e962014b8b2a48a189999ba9fe4a9599b82805bcb8194e31"
+  confidence_threshold: 0.5
+  target_classes: ["hand"]
+
+preprocessing:
+  face_detector: "haarcascade_frontalface_default.xml"
+  bounding_box_padding:
+    x_pad: 54
+    y_pad: 30
+  target_size: [224, 224]
+  color_space: "BGR"
+  skin_segmentation:
+    color_spaces: ["HSV", "YCbCr"]
+    hsv_lower: [0, 48, 80]
+    hsv_upper: [20, 255, 255]
+    ycbcr_lower: [0, 133, 77]
+    ycbcr_upper: [255, 173, 127]
+    morphology: "closing"
+    kernel_size: [3, 3]
+
+temporal_aggregation:
+  method: "majority_voting"
+  window_size: 15
+  min_agreement_ratio: 0.5
+
+baseline_metrics:
+  classification_accuracy: 0.0231
+  balanced_accuracy: 0.0223
+  macro_f1: 0.0168
+  weighted_f1: 0.0195
+  frame_accuracy: 0.2444
+  clip_accuracy: 0.2000
+  voting_gain_pp: -4.44
+  average_latency_ms: 242.20
+  p95_latency_ms: 320.21
+  throughput_fps: 4.13
+  ram_usage_gb: 1.94
+  ece: 0.5641
+  motion_blur_hand_recall: 0.0

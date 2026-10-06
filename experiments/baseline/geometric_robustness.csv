@@ -1,0 +1,13 @@
+Transformation,Parameter,Accuracy
+Rotation,-15deg,0.1065
+Rotation,-10deg,0.088
+Rotation,-5deg,0.1065
+Rotation,0deg,0.0231
+Rotation,5deg,0.1111
+Rotation,10deg,0.0648
+Rotation,15deg,0.1065
+Scaling,0.8x,0.0139
+Scaling,0.9x,0.0139
+Scaling,1.0x,0.0231
+Scaling,1.1x,0.0139
+Scaling,1.2x,0.0139

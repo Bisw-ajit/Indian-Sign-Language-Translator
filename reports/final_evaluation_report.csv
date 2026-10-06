@@ -1,0 +1,21 @@
+Metric,Value,Dataset,Number_of_samples,Experiment,Random_seed,Notes
+Classification_Accuracy,0.0231,Benchmark_Suite,216,Baseline,42,Measured on combined test suite
+Balanced_Accuracy,0.0223,Benchmark_Suite,216,Baseline,42,Mean per-class recall
+Macro_F1_Score,0.0168,Benchmark_Suite,216,Baseline,42,Unweighted average across 10 classes
+Weighted_F1_Score,0.0195,Benchmark_Suite,216,Baseline,42,Support-weighted average
+Best_Class_F1,O,Benchmark_Suite,216,Per_Class,42,Highest class F1 (0.0667)
+Lowest_Class_F1,I,Benchmark_Suite,216,Per_Class,42,Lowest class F1 (0.0000)
+Clip_Accuracy_Majority_Vote,0.2000,Simulated_Clips,30,Temporal_Consensus,42,Aggregated across 24-frame clips
+Temporal_Voting_Gain,-0.0444,Simulated_Clips,30,Temporal_Consensus,42,Clip accuracy minus isolated frame accuracy
+Illumination_Robustness_Drop_0.25x,-0.0741,Perturbation_Suite,216,Illumination_Stress,42,Degradation under 0.25x low-lux
+Background_Robustness_SkinBG_Acc,0.2500,Perturbation_Suite,216,Background_Stress,42,Accuracy with skin-coloured background
+Motion_Blur_YOLO_Recall,0.0000,Thesis_Stress_Set,100,Historical_Record,N/A,Measured in FYReport Table 3.3.1 (0/100 detected)
+Unseen_User_Accuracy,NOT AVAILABLE,Primary_Corpus,N/A,Signer_Split,N/A,Signer IDs not annotated in dataset
+YOLO_mAP_50,NOT AVAILABLE,All,N/A,Localization,N/A,Ground-truth bounding box labels missing
+Segmentation_mIoU,NOT AVAILABLE,All,N/A,Segmentation,N/A,Pixel ground-truth masks missing
+End_to_End_Success_Rate,0.0195,System_Cascade,Cascade,End_to_End,42,Face (95%) * YOLO (89%) * Prep (100%) * SqueezeNet
+Full_Pipeline_Average_Latency_ms,242.20,Host_Apple_Silicon,30,Latency_Benchmark,42,Single-frame complete cascade latency
+Full_Pipeline_P95_Latency_ms,320.21,Host_Apple_Silicon,30,Latency_Benchmark,42,95th percentile latency
+System_Throughput_FPS,4.13,Host_Apple_Silicon,30,Throughput_Benchmark,42,Frames per second on CPU
+Process_RAM_Usage_MB,1938.47,Host_Apple_Silicon,1,Resource_Benchmark,42,RSS memory footprint
+Model_Parameter_Count,727626,SqueezeNet,1,Model_Architecture,N/A,Total trainable and non-trainable weights

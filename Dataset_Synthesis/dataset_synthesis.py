@@ -24,6 +24,10 @@ for root, dirs, files, in os.walk('dataset'):
             enhancer = ImageEnhance.Brightness(img)
             img_count = 1 #constantly incremented, appends _1, _2 etc to the end of the file name
             
+            # Ensure modded output dir exists
+            modded_dir = os.path.join('modded_' + parent_path)
+            os.makedirs(modded_dir, exist_ok=True)
+            
             #darken the image
             for i in range(1, set_count + 1):
                 factor = random.uniform(0.1, 0.9) #use random number as a darkening factor

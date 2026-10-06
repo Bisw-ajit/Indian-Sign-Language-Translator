@@ -1,0 +1,286 @@
+{
+  "comparison": [
+    {
+      "Metric": "Accuracy",
+      "Baseline": 0.0231,
+      "Final": 0.2267,
+      "Absolute Change": 0.2036,
+      "Relative Change": "+881.39%"
+    },
+    {
+      "Metric": "Balanced Accuracy",
+      "Baseline": 0.0223,
+      "Final": 0.2267,
+      "Absolute Change": 0.2044,
+      "Relative Change": "+916.59%"
+    },
+    {
+      "Metric": "Macro F1",
+      "Baseline": 0.0168,
+      "Final": 0.1958,
+      "Absolute Change": 0.179,
+      "Relative Change": "+1065.48%"
+    },
+    {
+      "Metric": "Weighted F1",
+      "Baseline": 0.0195,
+      "Final": 0.1958,
+      "Absolute Change": 0.1763,
+      "Relative Change": "+904.10%"
+    },
+    {
+      "Metric": "Clip Accuracy",
+      "Baseline": 0.2,
+      "Final": 0.3667,
+      "Absolute Change": 0.1667,
+      "Relative Change": "+83.35%"
+    },
+    {
+      "Metric": "Unknown Detection",
+      "Baseline": 0.0,
+      "Final": 0.2833,
+      "Absolute Change": 0.2833,
+      "Relative Change": "N/A (baseline=0)"
+    },
+    {
+      "Metric": "Low-Light Accuracy",
+      "Baseline": 0.0,
+      "Final": 0.4667,
+      "Absolute Change": 0.4667,
+      "Relative Change": "N/A (baseline=0)"
+    },
+    {
+      "Metric": "Blur Accuracy",
+      "Baseline": 0.0,
+      "Final": 0.6,
+      "Absolute Change": 0.6,
+      "Relative Change": "N/A (baseline=0)"
+    },
+    {
+      "Metric": "Background Accuracy",
+      "Baseline": 0.018,
+      "Final": 0.5333,
+      "Absolute Change": 0.5153,
+      "Relative Change": "+2862.78%"
+    },
+    {
+      "Metric": "Unseen-Signer Accuracy",
+      "Baseline": 0.0,
+      "Final": 0.2232,
+      "Absolute Change": 0.2232,
+      "Relative Change": "N/A (baseline=0)"
+    },
+    {
+      "Metric": "Avg Latency",
+      "Baseline": 242.2,
+      "Final": 24.51,
+      "Absolute Change": -217.69,
+      "Relative Change": "-89.88%"
+    },
+    {
+      "Metric": "P95 Latency",
+      "Baseline": 320.21,
+      "Final": 24.34,
+      "Absolute Change": -295.87,
+      "Relative Change": "-92.40%"
+    },
+    {
+      "Metric": "FPS",
+      "Baseline": 4.13,
+      "Final": 40.8,
+      "Absolute Change": 36.67,
+      "Relative Change": "+887.89%"
+    },
+    {
+      "Metric": "RAM",
+      "Baseline": 1.94,
+      "Final": 0.49,
+      "Absolute Change": -1.45,
+      "Relative Change": "-74.74%"
+    },
+    {
+      "Metric": "Model Size",
+      "Baseline": 2.98,
+      "Final": 0.06,
+      "Absolute Change": -2.92,
+      "Relative Change": "-97.99%"
+    }
+  ],
+  "per_class": {
+    "G": {
+      "tp": 0,
+      "tn": 135,
+      "fp": 0,
+      "fn": 15,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 15
+    },
+    "I": {
+      "tp": 0,
+      "tn": 134,
+      "fp": 1,
+      "fn": 15,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 15
+    },
+    "K": {
+      "tp": 9,
+      "tn": 133,
+      "fp": 2,
+      "fn": 6,
+      "precision": 0.8181818181818182,
+      "recall": 0.6,
+      "f1": 0.6923076923076923,
+      "support": 15
+    },
+    "O": {
+      "tp": 15,
+      "tn": 28,
+      "fp": 107,
+      "fn": 0,
+      "precision": 0.12295081967213115,
+      "recall": 1.0,
+      "f1": 0.218978102189781,
+      "support": 15
+    },
+    "P": {
+      "tp": 3,
+      "tn": 135,
+      "fp": 0,
+      "fn": 12,
+      "precision": 1.0,
+      "recall": 0.2,
+      "f1": 0.33333333333333337,
+      "support": 15
+    },
+    "S": {
+      "tp": 0,
+      "tn": 135,
+      "fp": 0,
+      "fn": 15,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 15
+    },
+    "U": {
+      "tp": 1,
+      "tn": 130,
+      "fp": 5,
+      "fn": 14,
+      "precision": 0.16666666666666666,
+      "recall": 0.06666666666666667,
+      "f1": 0.09523809523809522,
+      "support": 15
+    },
+    "V": {
+      "tp": 0,
+      "tn": 135,
+      "fp": 0,
+      "fn": 15,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 15
+    },
+    "X": {
+      "tp": 1,
+      "tn": 134,
+      "fp": 1,
+      "fn": 14,
+      "precision": 0.5,
+      "recall": 0.06666666666666667,
+      "f1": 0.11764705882352941,
+      "support": 15
+    },
+    "Y": {
+      "tp": 5,
+      "tn": 135,
+      "fp": 0,
+      "fn": 10,
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "f1": 0.5,
+      "support": 15
+    }
+  },
+  "calibration": {
+    "ece": 0.036499710480372115,
+    "brier_score": 0.804328643563527,
+    "nll": 2.0854337215423584,
+    "mean_confidence_correct": 0.5706104040145874,
+    "mean_confidence_incorrect": 0.16337396204471588,
+    "bin_data": [
+      {
+        "bin": 1,
+        "range": [
+          0.1,
+          0.2
+        ],
+        "accuracy": 0.12295081967213115,
+        "confidence": 0.13534916937351227,
+        "weight": 0.8133333333333334,
+        "count": 122
+      },
+      {
+        "bin": 3,
+        "range": [
+          0.30000000000000004,
+          0.4
+        ],
+        "accuracy": 0.0,
+        "confidence": 0.336385577917099,
+        "weight": 0.02,
+        "count": 3
+      },
+      {
+        "bin": 4,
+        "range": [
+          0.4,
+          0.5
+        ],
+        "accuracy": 0.5,
+        "confidence": 0.4521954655647278,
+        "weight": 0.02666666666666667,
+        "count": 4
+      },
+      {
+        "bin": 5,
+        "range": [
+          0.5,
+          0.6000000000000001
+        ],
+        "accuracy": 0.0,
+        "confidence": 0.5337402820587158,
+        "weight": 0.02,
+        "count": 3
+      },
+      {
+        "bin": 6,
+        "range": [
+          0.6000000000000001,
+          0.7000000000000001
+        ],
+        "accuracy": 1.0,
+        "confidence": 0.6298052072525024,
+        "weight": 0.006666666666666667,
+        "count": 1
+      },
+      {
+        "bin": 9,
+        "range": [
+          0.9,
+          1.0
+        ],
+        "accuracy": 0.9411764705882353,
+        "confidence": 0.9876804351806641,
+        "weight": 0.11333333333333333,
+        "count": 17
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+Method,Frame_Accuracy,Clip_Accuracy,Voting_Gain,Macro_F1,Latency_ms,P95_Latency_ms,FPS
+Single Frame (Baseline),97.9,98.5,0.6,98.5,17.88,19.35,55.9
+Sliding Window (W=3),97.85,97.5,-0.35,97.51,17.38,19.16,57.5
+Sliding Window (W=5),97.9,97.5,-0.4,97.51,16.97,17.88,58.9
+Sliding Window (W=7),97.95,98.0,0.05,98.0,18.3,19.82,54.6
+EMA (alpha=0.3),97.85,98.0,0.15,98.0,16.89,17.79,59.2
+EMA (alpha=0.5),97.9,98.0,0.1,98.01,16.97,17.84,58.9
+EMA (alpha=0.7),98.0,98.0,0.0,98.01,17.06,18.64,58.6
+"Confidence-Weighted (W=5, p=2)",97.9,97.5,-0.4,97.51,16.83,17.68,59.4

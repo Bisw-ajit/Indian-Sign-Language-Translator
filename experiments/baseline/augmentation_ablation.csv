@@ -1,0 +1,7 @@
+Model,Augmented,Training_Time_Hours,Validation_Accuracy,Augmentation_Gain
+DenseNet,No,4.0,0.908,+0.0000
+DenseNet,Yes,8.04,0.91,+0.0020
+Inception_v3,No,1.72,0.574,+0.0000
+Inception_v3,Yes,6.67,0.54,-0.0340
+SqueezeNet,No,1.22,0.99,+0.0000
+SqueezeNet,Yes,5.83,0.98,-0.0100

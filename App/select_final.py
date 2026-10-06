@@ -9,16 +9,21 @@ Selection Criteria
 class selectFinal:
 
     def select_max(count):
+        if not count:
+            return "No sign detected"
         keymax = max(count, key = lambda x: count[x])
         return keymax
 
     def select_roulette(count):
-        sum = 0
-        for key in count:
-            sum = sum + count[key]
-        r = random.randint(0, sum)
+        if not count:
+            return "No sign detected"
+        sum_val = sum(count.values())
+        if sum_val == 0:
+            return list(count.keys())[0]
+        r = random.randint(0, sum_val)
         print(r)
         
+        keymax = list(count.keys())[0]
         for key in count:        
             r = r - count[key]
             if r <= 0:

@@ -1,0 +1,3 @@
+Experiment,Accuracy,Macro_F1,Latency_ms,P95_Latency_ms,FPS,Confusion_Errors
+Exp 003: ResMLP (Clean Train),97.0,96.99,17.03,17.98,58.7,6
+Exp 005: ResMLP (Hard Negatives Aug),95.5,95.52,16.97,17.59,58.9,9

@@ -1,0 +1,6 @@
+Level,Method,Accuracy,Notes
+Level_1_Frame,Isolated_Frame,0.2444,Individual frame prediction
+Level_2_Clip,Majority_Vote,0.2000,Existing project voting implementation
+Level_2_Clip,Probability_Average,0.2000,Average softmax vector aggregation
+Level_2_Clip,Confidence_Weighted_Vote,0.2000,Confidence-weighted mode
+Comparison,Voting_Gain,-0.0444,Clip Accuracy minus Frame Accuracy

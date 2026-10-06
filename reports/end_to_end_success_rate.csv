@@ -1,0 +1,6 @@
+Stage,Success_Rate,Failure_Rate
+Stage_0_Face_Activation,0.95,0.05
+Stage_3_Hand_Localization_YOLO,0.89,0.11
+Stage_3_Segmentation_Resizing,1.0,0.0
+Stage_4_SqueezeNet_Classification,0.0231,0.9769
+End_to_End_System_Translation,0.0195,0.9805

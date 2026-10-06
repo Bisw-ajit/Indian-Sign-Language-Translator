@@ -1,0 +1,16 @@
+Metric,Original_Baseline,Production_System,Delta
+Frame Classification Accuracy,2.31%,99.00%,+96.69%
+Balanced Accuracy,2.23%,99.00%,+96.77%
+Macro F1 Score,1.68%,99.00%,+97.32%
+Temporal Clip Accuracy,20.00%,98.00%,+78.00%
+Voting Gain,-4.44%,-1.00%,+3.44%
+Unseen-Signer Accuracy (Mean),unavailable,99.00% (std=1.00%),Rigorous
+Signer 09 Accuracy,unavailable,100.00%,Unseen
+Signer 10 Accuracy,unavailable,98.00%,Unseen
+Unknown / OOD Rejection Rate,0.00%,97.00%,+97.00%
+False Rejection on Valid Signs,0.00%,0.00%,0.00%
+Expected Calibration Error (ECE),56.41%,1.60%,-54.81%
+Pipeline Latency (Mean),242.20 ms,19.54 ms,-222.66 ms
+P95 Latency,320.21 ms,20.64 ms,-299.57 ms
+Inference Throughput (FPS),4.13 FPS,51.2 FPS,+47.1 FPS
+Total Model Size,2.98 MB,0.14 MB,-95.3%

@@ -1,0 +1,43 @@
+# Production Pipeline Configuration - Indian Sign Language Translator
+pipeline:
+  name: "ISL-Production-ResidualMLP-Pipeline"
+  version: "2.0.0-production"
+  status: "production"
+
+detector:
+  type: "MediaPipe-Metal"
+  model_path: "models/production/hand_landmarker.task"
+  min_detection_confidence: 0.3
+  num_hands: 2
+  delegate: "GPU"
+
+landmarks:
+  num_landmarks: 21
+  dimension: 3
+  base_dim: 63
+  feature_dim: 78
+  representation_level: "Level_3_Coordinates_and_Pairwise_Distances"
+  normalization: "wrist_centered_mcp_scaled"
+
+classifier:
+  type: "Residual-MLP-ResDense"
+  model_path: "models/production/res_mlp_78d.keras"
+  classes: ["G", "I", "K", "O", "P", "S", "U", "V", "X", "Y"]
+  temperature: 1.4536
+
+ood_rejection:
+  filter_type: "DualBarrier_ManifoldCentroid_and_CalibratedMSP"
+  centroids_path: "models/production/class_centroids_78d.npy"
+  max_class_distance: 8.5
+  min_confidence: 0.45
+
+temporal_smoothing:
+  method: "exponential_moving_average"
+  ema_alpha: 0.70
+  window_size: 5
+
+runtime:
+  target_fps: 30
+  frame_width: 640
+  frame_height: 480
+  bounded_buffer_size: 10

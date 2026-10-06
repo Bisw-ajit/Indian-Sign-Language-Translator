@@ -1,0 +1,2 @@
+Metric,Sample_Size,Mean_Accuracy,Std_Error,CI_95_Lower,CI_95_Upper,Statistical_Test
+Baseline_Accuracy,216,0.0231,0.0102,0.0099,0.0530,Wilson_Score_Binomial_CI

@@ -1,0 +1,5 @@
+Background_Condition,YOLO_Detection_Rate,Classification_Accuracy,YOLO_Failure_Rate,Classification_Failure_Rate
+Clean_Black_Studio,0.0,0.1,1.0,0.9
+Moderate_Clutter,0.0,0.15,1.0,0.85
+Heavy_Clutter,0.0,0.25,1.0,0.75
+Skin_Coloured_Background,0.0,0.25,1.0,0.75

@@ -13,8 +13,16 @@ sr = dnn_superres.DnnSuperResImpl_create()
 path = "ESPCN_x3.pb"
 sr.readModel(path)
 
-sr.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
-sr.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+try:
+    if hasattr(cv2, 'cuda') and cv2.cuda.getCudaEnabledDeviceCount() > 0:
+        sr.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+        sr.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+    else:
+        sr.setPreferableBackend(cv2.dnn.DNN_BACKEND_DEFAULT)
+        sr.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
+except Exception:
+    sr.setPreferableBackend(cv2.dnn.DNN_BACKEND_DEFAULT)
+    sr.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 sr.setModel("espcn", 3)
 
 input_folder = os.path.join(os.getcwd(), 'dataset', 'train')
@@ -28,17 +36,16 @@ yolo.confidence = 0.5
 
 for root, dirs, files in os.walk(input_folder):
     if files != []:
-        #print(root)
-        slash_loc = root.rfind('\\')
-        parent_dir = root[slash_loc + 1:]
+        parent_dir = os.path.basename(root)
         output_parent_location = os.path.join(output_folder, parent_dir)
+        os.makedirs(output_parent_location, exist_ok=True)
         count = 0
         
         for f in files:
             filename = str(f)
             input_img_location = os.path.join(root, filename)
             input_img = cv2.imread(input_img_location)
-            output_img_location = os.path.join(output_folder, filename)
+            output_img_location = os.path.join(output_parent_location, filename)
             #print(input_img_location)
             #print(output_img_location)
             

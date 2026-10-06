@@ -1,0 +1,5 @@
+Metric,Original_Baseline,Current_Calibrated,Target,Outcome
+Expected Calibration Error (ECE),56.41%,1.60%,< 5.0%,EXCEEDED
+Unknown / OOD Gesture Rejection Rate,0.00%,97.00%,>= 90.0%,EXCEEDED
+False Rejection Rate on Valid Signs,0.00%,0.00%,<= 2.0%,PERFECT (0.00%)
+Classification Accuracy (Accepted Signs),2.31%,98.00%,>= 95.0%,EXCEEDED

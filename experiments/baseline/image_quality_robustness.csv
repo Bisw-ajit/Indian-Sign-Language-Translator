@@ -1,0 +1,16 @@
+Perturbation,Severity_Level,Accuracy
+GaussianBlur,0,0.0231
+GaussianBlur,1,0.0046
+GaussianBlur,2,0.0046
+GaussianBlur,3,0.0972
+GaussianBlur,4,0.0972
+GaussianNoise,0,0.0231
+GaussianNoise,1,0.1019
+GaussianNoise,2,0.0093
+GaussianNoise,3,0.1204
+GaussianNoise,4,0.1528
+JPEG_Compression,0,0.0231
+JPEG_Compression,1,0.0093
+JPEG_Compression,2,0.0093
+JPEG_Compression,3,0.0139
+JPEG_Compression,4,0.0093

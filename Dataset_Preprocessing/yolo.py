@@ -25,7 +25,11 @@ class YOLO:
         ih, iw = image.shape[:2]
 
         ln = self.net.getLayerNames()
-        ln = [ln[i[0] - 1] for i in self.net.getUnconnectedOutLayers()]
+        unconnected = self.net.getUnconnectedOutLayers()
+        if len(unconnected) > 0 and isinstance(unconnected[0], (list, tuple, np.ndarray)):
+            ln = [ln[i[0] - 1] for i in unconnected]
+        else:
+            ln = [ln[i - 1] for i in unconnected]
 
         blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (self.size, self.size), swapRB=True, crop=False)
         self.net.setInput(blob)

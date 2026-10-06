@@ -1,0 +1,14 @@
+{
+  "Accuracy": 0.0231,
+  "Balanced_Accuracy": 0.0223,
+  "Macro_Precision": 0.1081,
+  "Macro_Recall": 0.0223,
+  "Macro_F1": 0.0168,
+  "Weighted_Precision": 0.143,
+  "Weighted_Recall": 0.0231,
+  "Weighted_F1": 0.0195,
+  "Cohen_Kappa": -0.0803,
+  "Matthews_Correlation_Coefficient": -0.0905,
+  "Total_Evaluation_Samples": 216,
+  "Number_of_Classes": 10
+}

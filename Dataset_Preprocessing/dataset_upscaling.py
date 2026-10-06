@@ -11,8 +11,16 @@ sr = dnn_superres.DnnSuperResImpl_create()
 path = "ESPCN_x3.pb"
 sr.readModel(path)
 
-sr.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
-sr.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+try:
+    if hasattr(cv2, 'cuda') and cv2.cuda.getCudaEnabledDeviceCount() > 0:
+        sr.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+        sr.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+    else:
+        sr.setPreferableBackend(cv2.dnn.DNN_BACKEND_DEFAULT)
+        sr.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
+except Exception:
+    sr.setPreferableBackend(cv2.dnn.DNN_BACKEND_DEFAULT)
+    sr.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
 # Set the desired model and scale to get correct pre- and post-processing
 sr.setModel("espcn", 3)

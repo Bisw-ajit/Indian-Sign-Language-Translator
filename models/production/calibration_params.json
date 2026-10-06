@@ -1,0 +1,6 @@
+{
+  "temperature": 1.4535692930221558,
+  "ood_distance_threshold": 14.86369514465332,
+  "min_confidence": 0.4,
+  "feature_dim": 78
+}

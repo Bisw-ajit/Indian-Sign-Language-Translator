@@ -1,0 +1,7 @@
+Sampling_Ratio,Sampled_Frames_Per_Clip,Frame_Accuracy,Clip_Accuracy,Avg_Inference_Time_Per_Frame_ms,Total_Processing_Time_s
+10%,2,0.2333,0.2333,25.6,1.54
+20%,4,0.2333,0.2333,25.56,3.07
+30%,7,0.2524,0.2667,26.05,5.47
+50%,12,0.2417,0.2,25.65,9.23
+75%,18,0.2481,0.2333,25.76,13.91
+100%,24,0.2333,0.2,25.52,18.38

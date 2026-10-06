@@ -1,0 +1,50 @@
+{
+  "project_dataset_audit": {
+    "audit_timestamp": "2026-10-04T00:59:00Z",
+    "evaluation_standard": "Empirical Verification Protocol",
+    "deployed_classes_count": 10,
+    "deployed_classes": ["G", "I", "K", "O", "P", "S", "U", "V", "X", "Y"],
+    "primary_training_corpus": {
+      "name": "ISL20C1200I (Indian Sign Language Dataset)",
+      "storage_status": "EXCLUDED_FROM_GIT (External RAR / Google Colab runtime)",
+      "total_classes": 20,
+      "deployed_classes": 10,
+      "samples_per_class": 1200,
+      "total_samples_deployed_subset": 12000,
+      "split_strategy": "80-20 Train-Validation Split",
+      "train_samples_per_class": 960,
+      "val_samples_per_class": 240,
+      "total_train_samples_10_classes": 9600,
+      "total_val_samples_10_classes": 2400,
+      "input_resolution": "Variable raw, standardized to 224x224x3",
+      "background_type": "Clean black studio background with uniform illumination",
+      "subject_diversity": "Limited signers (dark knitwear observed in primary samples)"
+    },
+    "synthetic_augmented_corpus": {
+      "generation_script": "Dataset_Synthesis/dataset_synthesis.py",
+      "cleaning_script": "Dataset_Synthesis/dataset_cleaning.py",
+      "multiplication_factor": 18,
+      "perturbation_types": ["Darkening (0.4-0.9x)", "Brightening (1.1-2.0x)", "Box Blur (r=5-20px)"],
+      "total_generated_images_20_classes": 432000,
+      "images_per_class_after_synthesis": 21600,
+      "yolo_filtering_thresholds": [0.5, 0.75, 0.9]
+    },
+    "stress_test_corpus": {
+      "target_class": "O",
+      "total_images": 600,
+      "conditions": [
+        {"condition": "Base condition", "sample_count": 100, "yolo_hand_detection_rate_pct": 89.0, "mean_confidence": 1.00},
+        {"condition": "Motion blurred", "sample_count": 100, "yolo_hand_detection_rate_pct": 0.0, "mean_confidence": 0.00},
+        {"condition": "Skin-coloured background", "sample_count": 100, "yolo_hand_detection_rate_pct": 100.0, "mean_confidence": 0.96},
+        {"condition": "Background interference (clutter)", "sample_count": 100, "yolo_hand_detection_rate_pct": 100.0, "mean_confidence": 0.97},
+        {"condition": "Zoomed out (scale shift)", "sample_count": 100, "yolo_hand_detection_rate_pct": 100.0, "mean_confidence": 0.99},
+        {"condition": "Other body parts (facial presence)", "sample_count": 100, "yolo_hand_detection_rate_pct": 77.0, "mean_confidence": 0.85}
+      ]
+    },
+    "data_leakage_assessment": {
+      "identified_leakage_risk": "HIGH",
+      "mechanism": "Un-grouped frame-level splitting of continuous video clips and post-synthesis partitioning creates identical or near-identical image pairs across train and validation folds.",
+      "observed_symptom": "Artificially inflated validation accuracy (98-99%) in thesis Table 4.5.1 contrasting with real-world failure on motion blur (0% detection) and background shifts."
+    }
+  }
+}

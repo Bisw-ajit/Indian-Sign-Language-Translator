@@ -4,10 +4,16 @@ import time
 import random
 from yolo import YOLO
 from preprocessing import handDetector, resize, skinDetector
-from tensorflow import keras
+try:
+    import tf_keras as keras
+except ImportError:
+    from tensorflow import keras
 from collections import defaultdict
 import json
-from tensorflow.python.keras.preprocessing import image
+try:
+    from tensorflow.keras.preprocessing import image
+except ImportError:
+    from keras.preprocessing import image
 import numpy as np
 import tensorflow as tf
 from select_final import selectFinal
@@ -73,16 +79,22 @@ color_blue = (255, 0, 0)
 color_green = (0, 255, 0)
 
 cap = cv2.VideoCapture(0)
+if not cap.isOpened():
+    print("Error: Could not open webcam device (cv2.VideoCapture(0)). Please check webcam permissions or device connection.")
+    exit(1)
+
 ret = cap.set(3, 864)
 ret = cap.set(4, 480)
 
 face_detect = False
 face_detected_count = 0
+failed_read_count = 0
 
 while face_detect is False:
     ret, frame = cap.read()
     
     if ret is True:
+        failed_read_count = 0
         frame = cv2.flip(frame, 1)
         faces = face_cascade.detectMultiScale(frame, scaleFactor = 1.05, minNeighbors = 5)
         
@@ -109,16 +121,20 @@ while face_detect is False:
             face_detected_count = 0
         
     else:
-        if face_detected_count > 0:
-            face_detected_count = face_detected_count - 1
-        print(face_detected_count)
-        
+        failed_read_count += 1
+        if failed_read_count >= 50:
+            print("Error: Webcam disconnected or frame read failed repeatedly.")
+            cap.release()
+            cv2.destroyAllWindows()
+            exit(1)
         continue
 
 cap.release()
 cv2.destroyAllWindows()
 
-video_folder = os.path.join(os.getcwd(),'videos')
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
+
+video_folder = os.path.join(APP_DIR, 'videos')
 CHECK_FOLDER = os.path.isdir(video_folder)
 if CHECK_FOLDER:
     shutil.rmtree(video_folder)
@@ -126,7 +142,7 @@ if CHECK_FOLDER:
 else :
     os.mkdir(video_folder)
     
-frames_folder = os.path.join(os.getcwd(), 'frames')
+frames_folder = os.path.join(APP_DIR, 'frames')
 CHECK_FOLDER = os.path.isdir(frames_folder)
 if CHECK_FOLDER:
     shutil.rmtree(frames_folder)
@@ -134,7 +150,7 @@ if CHECK_FOLDER:
 else :
     os.mkdir(frames_folder)
 
-boxed_frames_folder = os.path.join(os.getcwd(), 'frames_boxed')
+boxed_frames_folder = os.path.join(APP_DIR, 'frames_boxed')
 CHECK_FOLDER = os.path.isdir(boxed_frames_folder)
 if CHECK_FOLDER:
     shutil.rmtree(boxed_frames_folder)
@@ -142,7 +158,7 @@ if CHECK_FOLDER:
 else :
     os.mkdir(boxed_frames_folder)
 
-segmented_frames_folder = os.path.join(os.getcwd(), 'frames_segmented')
+segmented_frames_folder = os.path.join(APP_DIR, 'frames_segmented')
 CHECK_FOLDER = os.path.isdir(segmented_frames_folder)
 if CHECK_FOLDER:
     shutil.rmtree(segmented_frames_folder)
@@ -254,7 +270,9 @@ The frames saved go through the following preprocessing steps:
 2. Image Resizing to (224, 224)
 3. Skin Segmentation
 '''
-yolo = YOLO("yolo_models/cross-hands.cfg", "yolo_models/cross-hands.weights", ["hand"])
+yolo_cfg = os.path.join(APP_DIR, "yolo_models", "cross-hands.cfg")
+yolo_weights = os.path.join(APP_DIR, "yolo_models", "cross-hands.weights")
+yolo = YOLO(yolo_cfg, yolo_weights, ["hand"])
 yolo.confidence = 0.5
 
 _, _, files = next(os.walk(frames_folder))
@@ -305,7 +323,9 @@ The frames are passed through the trained model and their results are
 collectively stored in a list
 The output that occurs the most number of times is considered as the final output 
 '''
-model = keras.models.load_model("final_model")
+model_path = os.path.join(APP_DIR, "final_model.h5") if os.path.exists(os.path.join(APP_DIR, "final_model.h5")) else os.path.join(APP_DIR, "final_model")
+model = keras.models.load_model(model_path, compile=False)
+class_json_path = os.path.join(APP_DIR, 'model_class.json')
 _, _, files = next(os.walk(segmented_frames_folder))
 opcount = defaultdict(int)
 
@@ -314,7 +334,7 @@ for f in files:
     
     if filename.split('_')[0] == clip_timestamp:
         input_file_location = os.path.join(segmented_frames_folder, filename)
-        opcount[predictImage(input_file_location, 'model_class.json', 1)[0][0]] += 1
+        opcount[predictImage(input_file_location, class_json_path, 1)[0][0]] += 1
     
 print(opcount)
 detected_sign = selectFinal.select_max(opcount)

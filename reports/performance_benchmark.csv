@@ -1,0 +1,12 @@
+Component,Avg_ms,Median_ms,P95_ms,P99_ms
+Face_Detection_Haar,17.56,5.78,7.94,253.62
+Hand_Detection_YOLOv3,197.49,223.16,285.24,306.26
+Box_Expansion_and_Crop,0.0,0.0,0.0,0.0
+Skin_Segmentation_Watershed,1.24,1.24,1.35,1.43
+SqueezeNet_Inference,25.9,25.98,27.7,28.99
+Consensus_Voting,0.0,0.0,0.01,0.01
+Full_Pipeline_Single_Frame,242.2,255.76,320.21,588.59
+System_FPS,4.13,N/A,N/A,N/A
+Process_RAM_MB,1938.47,N/A,N/A,N/A
+Model_File_Size_MB,2.98,N/A,N/A,N/A
+Model_Parameter_Count,727626,N/A,N/A,N/A
